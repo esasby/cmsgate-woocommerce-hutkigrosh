@@ -78,8 +78,8 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
         $managedFields = new ManagedFieldsHutkigrosh();
         $managedFields->addAllExcept([ConfigFieldsHutkigrosh::shopName()]);
         $configForm = new ConfigFormWoo(
-            $managedFields,
-            AdminViewFields::CONFIG_FORM_COMMON
+            AdminViewFields::CONFIG_FORM_COMMON,
+            $managedFields
         );
         $configForm->addCmsManagedFields();
         return $configForm;

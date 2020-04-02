@@ -18,15 +18,10 @@ if (!defined('ABSPATH')) {
 
 class WcCmsgateHutkigrosh extends WcCmsgate
 {
-    const CALLBACK = 'wc_gateway_hutkigrosh_callback';
-    const SSLPRIVATEKEY = 'wc_gateway_bgpb_ssl_settings';
-    const SSLCRTREQUEST = 'wc_gateway_bgpb_ssl_crtrequest';
-
-    // Setup our Gateway's id, description and other values
     function __construct()
     {
         parent::__construct();
-        add_action('woocommerce_api_' . self::CALLBACK, array($this, 'hutkigrosh_callback'));
+        add_action('woocommerce_api_gateway_hutkigrosh', array($this, 'hutkigrosh_callback'));
         add_filter('woocommerce_thankyou_' . $this->id, array($this, 'hutkigrosh_thankyou_text'));
     }
 
@@ -55,7 +50,7 @@ class WcCmsgateHutkigrosh extends WcCmsgate
         }
     }
 
-    public function alfaclick_callback()
+    public static function alfaclick_callback()
     {
         try {
             $controller = new ControllerHutkigroshAlfaclick();
