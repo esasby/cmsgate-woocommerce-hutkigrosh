@@ -16,10 +16,10 @@
 
 ### Ручная установка
 1. Создайте резервную копию вашего магазина и базы данных
-1. Загрузите архив модуля [woo-hutkigrosh-gateway](https://bitbucket.esas.by/projects/CG/repos/cmsgate-woocommerce-hutkigrosh/browse/woo-hutkigrosh-gateway.zip) с помощью _Модули_ -> _Установка расширений_
+1. Загрузите архив модуля [woo-hutkigrosh-gateway](https://bitbucket.org/esasby/cmsgate-woocommerce-hutkigrosh/src/master/woo-hutkigrosh-gateway.zip) с помощью _Модули_ -> _Установка расширений_
 1. Через панель администратора Wordpress зайдите в меню __Плагины > Добавить новый__
 1. Нажмите __Загрузить плагин__
-1. Выберите загруженый в п2. архив модуля woocommerce-gateway-hutkigrosh.zip и установите
+1. Выберите загруженый в п2. архив модуля woo-hutkigrosh-gateway.zip и установите
 1. Активируйте плагин в меню Плагины -> Установленные
 1. Перейдите к настройке
 
