@@ -12,7 +12,7 @@ use esas\cmsgate\utils\htmlbuilder\Attributes as attribute;
 use esas\cmsgate\utils\htmlbuilder\Elements as element;
 
 
-class CompletionPanelWoo extends CompletionPanel
+class CompletionPanelHutkigroshWoo extends CompletionPanelHutkigrosh
 {
     public function render()
     {

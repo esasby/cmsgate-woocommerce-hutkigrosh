@@ -4,8 +4,9 @@ use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshAddBill;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshAlfaclick;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshCompletionPage;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshNotify;
-use esas\cmsgate\utils\Logger;
+use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshWebpayForm;
 use esas\cmsgate\hutkigrosh\utils\RequestParamsHutkigrosh;
+use esas\cmsgate\utils\Logger;
 use esas\cmsgate\woocommerce\WcCmsgate;
 use esas\cmsgate\wrappers\OrderWrapper;
 
@@ -42,9 +43,11 @@ class WcCmsgateHutkigrosh extends WcCmsgate
     function hutkigrosh_thankyou_text($order_id)
     {
         try {
-            $controller = new ControllerHutkigroshCompletionPage();
-            $completionPanel = $controller->process($order_id);
-            $completionPanel->render();
+            if (!ControllerHutkigroshWebpayForm::isSuccessReturnUrl()) {
+                $controller = new ControllerHutkigroshCompletionPage();
+                $completionPanel = $controller->process($order_id);
+                $completionPanel->render();
+            }
         } catch (Throwable $e) {
             Logger::getLogger("payment")->error("Exception:", $e);
         }

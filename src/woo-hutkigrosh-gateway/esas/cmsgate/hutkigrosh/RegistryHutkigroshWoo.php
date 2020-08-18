@@ -9,19 +9,27 @@
 namespace esas\cmsgate\hutkigrosh;
 
 
-use esas\cmsgate\lang\LocaleLoaderWoo;
-use esas\cmsgate\hutkigrosh\lang\TranslatorHutkigrosh;
+use esas\cmsgate\CmsConnectorWoo;
+use esas\cmsgate\descriptors\ModuleDescriptor;
+use esas\cmsgate\descriptors\VendorDescriptor;
+use esas\cmsgate\descriptors\VersionDescriptor;
 use esas\cmsgate\view\admin\AdminViewFields;
 use esas\cmsgate\view\admin\ConfigFormWoo;
-use esas\cmsgate\hutkigrosh\view\admin\ManagedFieldsHutkigrosh;
-use esas\cmsgate\wrappers\OrderWrapper;
-use esas\cmsgate\wrappers\OrderWrapperWoo;
-use esas\cmsgate\hutkigrosh\view\client\CompletionPanelWoo;
+use esas\cmsgate\hutkigrosh\view\client\CompletionPanelHutkigroshWoo;
 use esas\cmsgate\hutkigrosh\wrappers\ConfigWrapperHutkigroshWoo;
-use WP_Post;
 
 class RegistryHutkigroshWoo extends RegistryHutkigrosh
 {
+    /**
+     * RegistryHutkigroshWoo constructor.
+     */
+    public function __construct()
+    {
+        $this->cmsConnector = new CmsConnectorWoo();
+        $this->paysystemConnector = new PaysystemConnectorHutkigrosh();
+    }
+
+
     /**
      * Переопделение для упрощения типизации
      * @return RegistryHutkigroshWoo
@@ -31,52 +39,10 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
         return parent::getRegistry();
     }
 
-    /**
-     * @return TranslatorHutkigrosh
-     */
-    public function createTranslator()
-    {
-        $localeLoader = new LocaleLoaderWoo();
-        return new TranslatorHutkigrosh($localeLoader);
-    }
-
-    public function getOrderWrapper($orderId)
-    {
-        return new OrderWrapperWoo($orderId);
-    }
-
-    /**
-     * По локальному номеру заказа (может отличаться от id) возвращает wrapper
-     * @param $orderNumber
-     * @return OrderWrapper
-     */
-    public function getOrderWrapperByOrderNumber($orderNumber)
-    {
-        return $this->getOrderWrapper($orderNumber);
-    }
-
-    /**
-     * По номеру транзакции внешней система возвращает wrapper
-     * @param $extId
-     * @return OrderWrapper
-     */
-    public function getOrderWrapperByExtId($extId)
-    {
-        /** @var WP_Post[] $posts */
-        $posts = get_posts( array(
-            'meta_key'    => OrderWrapperWoo::EXTID_METADATA_KEY,
-            'meta_value'  => $extId,
-            'post_type'   => 'shop_order',
-            'post_status' => 'any'
-        ));
-        $post = $posts[0];
-        return $this->getOrderWrapper($post->ID);
-    }
 
     public function createConfigForm()
     {
-        $managedFields = new ManagedFieldsHutkigrosh();
-        $managedFields->addAllExcept([ConfigFieldsHutkigrosh::shopName()]);
+        $managedFields = $this->getManagedFieldsFactory()->getManagedFieldsExcept(AdminViewFields::CONFIG_FORM_COMMON, [ConfigFieldsHutkigrosh::shopName()]);
         $configForm = new ConfigFormWoo(
             AdminViewFields::CONFIG_FORM_COMMON,
             $managedFields
@@ -87,14 +53,31 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
 
     public function getCompletionPanel($orderWrapper)
     {
-        $completionPanel = new CompletionPanelWoo($orderWrapper);
+        $completionPanel = new CompletionPanelHutkigroshWoo($orderWrapper);
         return $completionPanel;
     }
 
-    public function createConfigWrapper()
+
+    function getUrlAlfaclick($orderId)
     {
-        return new ConfigWrapperHutkigroshWoo();
+        return admin_url('admin-ajax.php') . "?action=alfaclick";
     }
 
+    function getUrlWebpay($orderId)
+    {
+        $order = wc_get_order($orderId);
+        return $order->get_checkout_order_received_url();
+    }
 
+    public function createModuleDescriptor()
+    {
+        return new ModuleDescriptor(
+            "hutkigrosh",
+            new VersionDescriptor("3.11.0", "2020-08-18"),
+            "Прием платежей через ЕРИП (сервис ХуткiГрош)",
+            "https://bitbucket.org/esasby/cmsgate-woocommerce-hutkigrosh/src/master/",
+            VendorDescriptor::esas(),
+            "Выставление пользовательских счетов в ЕРИП"
+        );
+    }
 }

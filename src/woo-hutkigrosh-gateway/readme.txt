@@ -1,7 +1,7 @@
 === WooCommerce Hutkigrosh Gateway ===
 Contributors: nmekh
 Tags: commerce, woocommerce, hutkigrosh, shopping, gateway, erip
-Stable tag: 3.0.0
+Stable tag: 3.11.3
 Requires at least: 4.6
 Tested up to: 5.4
 Requires PHP: 5.5
@@ -58,3 +58,8 @@ After invoicing you clients will be available for payment by a plastic card and 
 
 = 3.0.0 =
 * Cmsgate-core library integration
+
+= 3.11.3 =
+* Cmsgate-core library update
+* jquery http link changed to https
+* Webpay success return to empty page
