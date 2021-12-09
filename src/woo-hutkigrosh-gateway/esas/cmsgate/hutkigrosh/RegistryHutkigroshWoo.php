@@ -58,14 +58,14 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
     }
 
 
-    function getUrlAlfaclick($orderId)
+    function getUrlAlfaclick($orderWrapper)
     {
         return admin_url('admin-ajax.php') . "?action=alfaclick";
     }
 
-    function getUrlWebpay($orderId)
+    function getUrlWebpay($orderWrapper)
     {
-        $order = wc_get_order($orderId);
+        $order = wc_get_order($orderWrapper->getOrderId());
         return $order->get_checkout_order_received_url();
     }
 
@@ -73,7 +73,7 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
     {
         return new ModuleDescriptor(
             "hutkigrosh",
-            new VersionDescriptor("3.11.0", "2020-08-18"),
+            new VersionDescriptor("3.11.4", "2021-12-08"),
             "Прием платежей через ЕРИП (сервис ХуткiГрош)",
             "https://bitbucket.org/esasby/cmsgate-woocommerce-hutkigrosh/src/master/",
             VendorDescriptor::esas(),
