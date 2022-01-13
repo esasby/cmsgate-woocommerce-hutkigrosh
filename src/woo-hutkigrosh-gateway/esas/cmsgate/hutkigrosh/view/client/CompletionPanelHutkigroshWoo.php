@@ -35,7 +35,7 @@ class CompletionPanelHutkigroshWoo extends CompletionPanelHutkigrosh
         echo $completionPanel;
     }
 
-    public function elementTab($key, $header, $body)
+    public function elementTab($key, $header, $body, $selectable = true)
     {
         return
             element::li(
