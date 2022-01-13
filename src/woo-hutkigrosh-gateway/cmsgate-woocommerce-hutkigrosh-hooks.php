@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 Plugin Name: WooCommerce Hutkigrosh Gateway
 Plugin URI: https://bitbucket.esas.by/projects/CG/repos/cmsgate-woocommerce-hutkigrosh/browse
 Description: Модуль для выставления счетов в систему ЕРИП через сервис ХуткiГрош
-Version: 3.11.5
+Version: 3.11.6
 Author: ESAS
 Author Email: n.mekh@hutkigrosh.by
 Text Domain: woocommerce-hutkigrosh-payments
