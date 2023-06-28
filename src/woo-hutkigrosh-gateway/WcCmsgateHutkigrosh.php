@@ -2,7 +2,7 @@
 
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshAddBill;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshAlfaclick;
-use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshCompletionPage;
+use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshCompletionPanel;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshNotify;
 use esas\cmsgate\hutkigrosh\controllers\ControllerHutkigroshWebpayForm;
 use esas\cmsgate\hutkigrosh\utils\RequestParamsHutkigrosh;
@@ -44,9 +44,9 @@ class WcCmsgateHutkigrosh extends WcCmsgate
     {
         try {
             if (!ControllerHutkigroshWebpayForm::isSuccessReturnUrl()) {
-                $controller = new ControllerHutkigroshCompletionPage();
+                $controller = new ControllerHutkigroshCompletionPanel();
                 $completionPanel = $controller->process($order_id);
-                $completionPanel->render();
+                echo $completionPanel->build();
             }
         } catch (Throwable $e) {
             Logger::getLogger("payment")->error("Exception:", $e);

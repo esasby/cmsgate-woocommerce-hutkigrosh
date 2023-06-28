@@ -6,17 +6,20 @@
  * Time: 12:05
  */
 
-namespace esas\cmsgate\hutkigrosh;
+namespace esas\cmsgate\woocommerce;
 
 
-use esas\cmsgate\CmsConnectorWoo;
 use esas\cmsgate\descriptors\ModuleDescriptor;
 use esas\cmsgate\descriptors\VendorDescriptor;
 use esas\cmsgate\descriptors\VersionDescriptor;
+use esas\cmsgate\hro\HROManager;
+use esas\cmsgate\hutkigrosh\ConfigFieldsHutkigrosh;
+use esas\cmsgate\hutkigrosh\hro\client\CompletionPanelHutkigroshHRO;
+use esas\cmsgate\hutkigrosh\PaysystemConnectorHutkigrosh;
+use esas\cmsgate\hutkigrosh\RegistryHutkigrosh;
 use esas\cmsgate\view\admin\AdminViewFields;
-use esas\cmsgate\view\admin\ConfigFormWoo;
-use esas\cmsgate\hutkigrosh\view\client\CompletionPanelHutkigroshWoo;
-use esas\cmsgate\hutkigrosh\wrappers\ConfigWrapperHutkigroshWoo;
+use esas\cmsgate\woocommerce\hro\client\CompletionPanelHutkigroshHRO_Woo;
+use esas\cmsgate\woocommerce\view\admin\ConfigFormWoo;
 
 class RegistryHutkigroshWoo extends RegistryHutkigrosh
 {
@@ -29,6 +32,10 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
         $this->paysystemConnector = new PaysystemConnectorHutkigrosh();
     }
 
+    public function init() {
+        parent::init();
+        HROManager::fromRegistry()->addImplementation(CompletionPanelHutkigroshHRO::class, CompletionPanelHutkigroshHRO_Woo::class);
+    }
 
     /**
      * Переопделение для упрощения типизации
@@ -51,13 +58,6 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
         return $configForm;
     }
 
-    public function getCompletionPanel($orderWrapper)
-    {
-        $completionPanel = new CompletionPanelHutkigroshWoo($orderWrapper);
-        return $completionPanel;
-    }
-
-
     function getUrlAlfaclick($orderWrapper)
     {
         return admin_url('admin-ajax.php') . "?action=alfaclick";
@@ -73,9 +73,9 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
     {
         return new ModuleDescriptor(
             "hutkigrosh",
-            new VersionDescriptor("3.11.6", "2022-01-13"),
+            new VersionDescriptor("4.0.0", "2023-06-16"),
             "Прием платежей через ЕРИП (сервис ХуткiГрош)",
-            "https://bitbucket.org/esasby/cmsgate-woocommerce-hutkigrosh/src/master/",
+            "https://github.com/esasby/cmsgate-woocommerce-hutkigrosh",
             VendorDescriptor::esas(),
             "Выставление пользовательских счетов в ЕРИП"
         );

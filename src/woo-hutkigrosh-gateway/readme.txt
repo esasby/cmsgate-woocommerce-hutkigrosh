@@ -1,9 +1,9 @@
 === WooCommerce Hutkigrosh Gateway ===
 Contributors: nmekh
 Tags: commerce, woocommerce, hutkigrosh, shopping, gateway, erip
-Stable tag: 3.11.6
+Stable tag: 4.0.0
 Requires at least: 4.6
-Tested up to: 5.8.2
+Tested up to: 6.2.2
 Requires PHP: 5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -72,3 +72,8 @@ After invoicing you clients will be available for payment by a plastic card and 
 
 = 3.11.6 =
 * elementTab bugfix
+
+= 4.0.0 =
+* Update to latest core version
+* Wordpress 6.2 compatibility
+* HRO support
