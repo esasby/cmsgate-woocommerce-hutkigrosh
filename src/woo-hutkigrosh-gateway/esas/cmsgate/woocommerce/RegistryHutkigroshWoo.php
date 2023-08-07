@@ -73,7 +73,7 @@ class RegistryHutkigroshWoo extends RegistryHutkigrosh
     {
         return new ModuleDescriptor(
             "hutkigrosh",
-            new VersionDescriptor("4.0.0", "2023-06-16"),
+            new VersionDescriptor("4.0.1", "2023-08-07"),
             "Прием платежей через ЕРИП (сервис ХуткiГрош)",
             "https://github.com/esasby/cmsgate-woocommerce-hutkigrosh",
             VendorDescriptor::esas(),
