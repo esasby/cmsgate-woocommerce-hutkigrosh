@@ -7,12 +7,12 @@ if (!defined('ABSPATH')) {
 Plugin Name: WooCommerce Hutkigrosh Gateway
 Plugin URI: https://github.com/esasby/cmsgate-woocommerce-hutkigrosh
 Description: Модуль для выставления счетов в систему ЕРИП через сервис ХуткiГрош
-Version: 4.0.2
+Version: 4.0.3
 Author: ESAS
 Author Email: n.mekh@alcosi.eu
 Text Domain: woocommerce-hutkigrosh-payments
-WC requires at least: 3.0.0
-WC tested up 8.8.2
+WC requires at least: 9.0.0
+WC tested up 10.4.3
 */
 
 // Include our Gateway Class and register Payment Gateway with WooCommerce
@@ -35,6 +35,26 @@ function wc_cmsgate_hutkigrosh_init()
         return $methods;
     }
 }
+
+/* HPOS & Blocks Compatible */
+add_action( 'before_woocommerce_init', function () {
+    try {
+        if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
+        }
+    }catch ( \Exception $e ) {}
+});
+
+add_action( 'woocommerce_blocks_loaded', function() {
+    include_once('WcCmsgateHutkigroshPaymentMethod.php');
+    add_action(
+        'woocommerce_blocks_payment_method_type_registration',
+        function (\Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry) {
+            $payment_method_registry->register(new WcCmsgateHutkigroshPaymentMethod());
+        }
+    );
+} ); // WooCommerce Blocks
 
 // Add custom action links
 require_once dirname(__FILE__) . '/vendor/esas/cmsgate-woocommerce-lib/src/esas/cmsgate/woocommerce/cmsgate-woocommerce-hooks.php';
