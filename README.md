@@ -8,7 +8,7 @@
 
 Поддерживаются **одновременно две версии модуля**:
 
-| | **Hutkigrosh API v3** (рекомендуется) | **WooCommerce Hutkigrosh Gateway** |
+| | **Hutkigrosh API v3** (рекомендуется) | **Hutkigrosh** |
 |---|---|---|
 | Плагин | Hutkigrosh API v3 Gateway for WooCommerce | WooCommerce Hutkigrosh Gateway |
 | Текущая версия | 4.0.5 | 4.0.3 |
