@@ -29,8 +29,8 @@
 
 ## Требования
 
-- WordPress 6.0 и выше (проверено до 6.9), WooCommerce 9.0 и выше (проверено до 10.4.3)
-- PHP 7.4 и выше, расширение cURL
+- WordPress 6.0 и выше (проверено до 6.9), [WooCommerce](https://woocommerce.com/) 9.0 и выше (проверено до 10.4.3)
+- PHP 7.4 и выше, расширение [cURL](https://www.php.net/manual/ru/book.curl.php)
 
 ## Установка (одинакова для обеих версий)
 
