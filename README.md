@@ -19,7 +19,7 @@
 
 > **Важно.** Сервис ХуткiГрош пока работает со всеми поколениями API параллельно!
 
-Следите за анонсами ХуткiГрош о сроках отключения старого API и планируйте переход на API v3 заблаговременно (см. раздел «[Переход на API v3](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/README.md#%D0%BE%D0%B4%D0%BD%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%B8-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4-%D0%BD%D0%B0-api-v3)»).
+Следите за анонсами ХуткiГрош о сроках отключения старого API и планируйте переход на API v3 заблаговременно (инструкция по переходу на новую версию см. раздел «[Переход на API v3](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/README.md#%D0%BE%D0%B4%D0%BD%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D0%B8-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4-%D0%BD%D0%B0-api-v3)»).
 
 ## Скачать
 
