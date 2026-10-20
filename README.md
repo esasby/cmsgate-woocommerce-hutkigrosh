@@ -11,7 +11,7 @@
 | | [Hutkigrosh API v3](#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-hutkigrosh-api-v3) (рекомендуется) | [Hutkigrosh](#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-woocommerce-hutkigrosh-gateway-%D0%BF%D1%80%D0%B5%D0%B4%D1%8B%D0%B4%D1%83%D1%89%D0%B5%D0%B5-%D0%BF%D0%BE%D0%BA%D0%BE%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5) |
 |---|---|---|
 | Плагин | Hutkigrosh API v3 Gateway for WooCommerce | WooCommerce Hutkigrosh Gateway |
-| Текущая версия | 4.0.5 | 4.0.3 |
+| Текущая версия | 4.1.5 | 4.0.3 |
 | API | актуальное поколение (REST API v3) | предыдущее поколение API |
 | Подключение | API-токен, выбор услуги из списка | логин/пароль, ERIP ID вручную |
 | Тестовая система | api-sandbox.hgrosh.by | trial.hgrosh.by |
@@ -23,7 +23,7 @@
 
 ## Скачать
 
-- Hutkigrosh API v3 (рекомендуется): [woo-hutkigrosh-gateway-apiv3.zip](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway-apiv3.zip) (v4.0.5)
+- Hutkigrosh API v3 (рекомендуется): [woo-hutkigrosh-gateway-apiv3.zip](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway-apiv3.zip) (v4.1.5)
 - WooCommerce Hutkigrosh Gateway: [woo-hutkigrosh-gateway.zip](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway.zip) (v4.0.3)
 - Предыдущие релизы (файлы в корне репозитория): [4.0.2](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway%5B4.0.2%5D.zip), [4.0](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway%5B4.0%5D.zip), [2.0](https://github.com/esasby/cmsgate-woocommerce-hutkigrosh/blob/master/woo-hutkigrosh-gateway%5B2.0%5D-old.zip)
 
@@ -98,7 +98,7 @@ https://ваш-домен/?wc-api=gateway_hutkigrosh
 ### Тестовый режим (Sandbox)
 
 1. Получите API-токен тестовой системы (выдаётся при регистрации в ХуткiГрош).
-1. Включите в настройках модуля режим Sandbox и введите токен тестовой системы.
+1. Включите в настройках модуля режим Sandbox и настройте согласно инструкции выше.
 1. Счета будут выставляться в тестовую систему `api-sandbox.hgrosh.by`.
 1. Для эмуляции оплаты счёта используйте личный кабинет тестовой системы.
 
@@ -160,7 +160,7 @@ https://ваш-домен/?wc-api=gateway_hutkigrosh
 ### Тестовый режим
 
 * Используйте данные для подключения к тестовой системе, полученные при регистрации в ХуткiГрош.
-* Включите в настройках модуля режим "Песочницы" (Sandbox).
+* Включите в настройках модуля режим "Песочницы" (Sandbox) настройте согласно инструкции выше.
 * Для эмуляции оплаты клиентом выставленного счёта воспользуйтесь личным кабинетом:
   * [Тестовый кабинет API v3](https://cabinet.hgrosh.by), сверху справа "Профиль пользователя" > "Тестовый режим"
   * [Предыдущая версия кабинета](https://trial.hgrosh.by), меню "Тест оплаты ЕРИП"
@@ -188,13 +188,3 @@ https://ваш-домен/?wc-api=gateway_hutkigrosh
 ## Поддержка
 
 По вопросам подключения и работы сервиса обращайтесь в службу технической поддержки [ХуткiГрош](https://hutkigrosh.by).
-
-## История изменений
-
-* 4.0.5 (API v3): уникальный номер счёта при выставлении, сопоставление колбэка оплаты (notify) по номеру счёта и extId, совместимость с HPOS и PHP 8.4, кеш metadata услуги, показ реального номера счёта клиенту.
-* 4.0.4 (API v3): переход на API v3 сервиса ХуткiГрош.
-* 4.0.3: совместимость с WordPress 6.9 и WooCommerce 10.4.3, удалена секция Alfaclick.
-* 4.0.2: совместимость с WordPress 6.5.2 и WooCommerce 8.8.2.
-* 4.0.0: обновление cmsgate-core, совместимость с WordPress 6.2, поддержка HRO.
-
-Полный список изменений: [readme.txt](woo-hutkigrosh-gateway/readme.txt)
